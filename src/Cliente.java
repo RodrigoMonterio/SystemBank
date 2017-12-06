@@ -2,6 +2,7 @@
 public class Cliente {
 	private String cpf;
 	private String nome;
+	private String estadoCivil;
 	
 	public Cliente() {
 	}
@@ -20,6 +21,12 @@ public class Cliente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public void public String getEstadoCivil() {
+		return estadoCivil;
+	}
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
 	}
 	
 	@Override
