@@ -1,6 +1,7 @@
 
 public class Conta {
 	private Cliente cliente;
+	private String tipo;
 	private String numero;
 	private double saldo;
 
@@ -35,5 +36,5 @@ public class Conta {
 
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
-	}
+	}	
 }
