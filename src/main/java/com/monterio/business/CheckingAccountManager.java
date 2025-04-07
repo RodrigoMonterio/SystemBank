@@ -46,20 +46,19 @@ public class CheckingAccountManager {
 		return false;
 	}
 
-	public boolean transferAmount(int sourceAccountId, double amount, int destinationAccountId) {
-		CheckingAccount sourceAccount = findAccountById(sourceAccountId);
-		CheckingAccount destinationAccount = findAccountById(destinationAccountId);
+	public boolean transferAmount(int sourceAccountId, double amount, int targetAccountId) {
+		if (amount <= 0) return false;
 
-		if (sourceAccount == null || destinationAccount == null) {
-			return false;
-		}
+		CheckingAccount source = findAccountById(sourceAccountId);
+		CheckingAccount target = findAccountById(targetAccountId);
 
-		if (sourceAccount.getBalance() >= amount) {
-			sourceAccount.setBalance(sourceAccount.getBalance() - amount);
-			destinationAccount.setBalance(destinationAccount.getBalance() + amount);
-			return true;
-		}
+		if (source == null || target == null) return false;
+		if (!source.isActive() || !target.isActive()) return false;
+		if (source.getBalance() < amount) return false;
 
-		return false;
+		source.setBalance(source.getBalance() - amount);
+		target.setBalance(target.getBalance() + amount);
+
+		return true;
 	}
 }
